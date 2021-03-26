@@ -8,11 +8,12 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var websites = ["apple.com", "google.com", "hackingwithswift.com"]
+    var websites = ["apple.com", "google.com", "hackingwithswift.com", "youtube.com", "twitter.com", "github.com"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Web Browser"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         
     }

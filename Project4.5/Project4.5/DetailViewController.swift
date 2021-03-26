@@ -25,6 +25,8 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(openTapped))
+        
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action: #selector(webView.goForward))
@@ -63,6 +65,11 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
             
         }
         decisionHandler(.cancel)
+    }
+    @objc func openTapped() {
+        let ac = UIActivityViewController(activityItems: [URL(string: selectedWebsite!)!], applicationActivities: [])
+        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem //iPad
+        present(ac, animated: true)
     }
     
 
